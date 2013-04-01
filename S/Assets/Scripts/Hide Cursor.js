@@ -1,0 +1,1 @@
+Screen.showCursor = false;
