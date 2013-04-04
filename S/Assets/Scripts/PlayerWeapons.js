@@ -1,42 +1,49 @@
 var currentWeapon = 0; 
 var numWeapons = 1; 
 
-function Awake () {
-	// Select the first weapon
+function Awake () 
+{
 	SelectWeapon(0);
 }
 
-function Update () {
-	// Did the user press fire?
-/*	if (Input.GetButton ("Fire1"))
-		BroadcastMessage("Fire"); */
-	if (Input.GetAxis("Mouse ScrollWheel") < 0){
-		if (currentWeapon + 1 <= numWeapons){
-			currentWeapon++;
+function Update () 
+{	
+	if ( !Input.GetButton("Fire1"))
+	{
+		if (Input.GetAxis("Mouse ScrollWheel") < 0)
+		{
+			if (currentWeapon + 1 <= numWeapons)
+			{
+				currentWeapon++;
+			}
+	
+			else 
+			{
+				currentWeapon = 0;
+			}
+	
+	        SelectWeapon(currentWeapon);
+			
+			}
+	
+		else if (Input.GetAxis("Mouse ScrollWheel") > 0)
+		{
+			if (currentWeapon - 1 >= 0)
+			{
+				currentWeapon--;
+			}
+	
+			else 
+			{
+				currentWeapon = numWeapons;
+			}
+	
+			SelectWeapon(currentWeapon);
+	
 		}
-
-		else {
-			currentWeapon = 0;
-		}
-
-        SelectWeapon(currentWeapon);
-		
-		}
-
-	else if (Input.GetAxis("Mouse ScrollWheel") > 0){
-		if (currentWeapon - 1 >= 0){
-		currentWeapon--;
-		}
-
-		else {
-			currentWeapon = numWeapons;
-		}
-
-		SelectWeapon(currentWeapon);
-
 	}
-
-	if (Input.GetKeyDown("1")){
+	if (Input.GetKeyDown("1"))
+	{
         SelectWeapon(0);
     }   
 
@@ -48,7 +55,8 @@ function Update () {
 
  
 
-function SelectWeapon (index : int) {
+function SelectWeapon (index : int) 
+{
 
     for (var i=0;i<transform.childCount;i++)
 

@@ -22,7 +22,7 @@ function Update () {
 }
 
 function CalculateCharge () {
-     while(Input.GetButton("Fire1")) { //Add to the charge as long as the
+     while(Input.GetButton("Fire1") && chargeLevel < 1.5f) { //Add to the charge as long as the
      // user is holding the button
           chargeLevel += Time.deltaTime * chargeSpeed;
           yield; //Will cause a crash without this.
