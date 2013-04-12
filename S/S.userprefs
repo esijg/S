@@ -1,6 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SoundCubeCreator.cs">
+    <Files>
+      <File FileName="Assets/Scripts/SoundCubeCreator.cs" Line="15" Column="2" />
+      <File FileName="Assets/Scripts/CreationCubeFX.cs" Line="5" Column="40" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
