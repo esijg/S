@@ -31,11 +31,34 @@ public class CreationCubeFX : MonoBehaviour
 	private bool spinning = false;
 	
 	
+	void Awake()
+	{
+		int index = 0;
+		
+		foreach(Transform t in leftHalf){
+			if ( t.gameObject.name=="Plane") planes[index++] = t.gameObject;
+		}
+		
+		foreach(Transform t in rightHalf){
+			if ( t.gameObject.name=="Plane") planes[index++] = t.gameObject;
+		}
+		
+		
+		startingColor = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+		
+		foreach(GameObject o in planes)
+		{
+			o.renderer.material.color = startingColor;
+		}
+	}
+	
 	public void StartTransitionIn(SoundCubeCreator caller)
 	{
 		callingObject = caller;	
 		transitioningIn = true;
 		transitionStartTime = Time.time;
+		
+		
 	}
 	
 	public void FadeInFacesWithMaterialID(int id)
@@ -57,17 +80,19 @@ public class CreationCubeFX : MonoBehaviour
 		
 		if ( transitioningIn)
 		{
-			leftHalf.transform.position = Vector3.Lerp(leftFaceOutTransform.transform.position, Vector3.zero, (Time.time - transitionStartTime)/transitionDuration);
+			leftHalf.transform.localPosition = Vector3.Lerp(leftFaceOutTransform.transform.position, Vector3.zero, (Time.time - transitionStartTime)/transitionDuration);
 			leftHalf.transform.localScale = Vector3.Lerp(leftFaceOutTransform.transform.localScale, Vector3.one, (Time.time - transitionStartTime)/transitionDuration);
 			leftHalf.transform.localRotation = Quaternion.Lerp(leftFaceOutTransform.transform.localRotation, Quaternion.identity, (Time.time - transitionStartTime)/transitionDuration);
 			
-			rightHalf.transform.position = Vector3.Lerp(rightFaceOutTransform.transform.position, Vector3.zero, (Time.time - transitionStartTime)/transitionDuration);
+			rightHalf.transform.localPosition = Vector3.Lerp(rightFaceOutTransform.transform.position, Vector3.zero, (Time.time - transitionStartTime)/transitionDuration);
 			rightHalf.transform.localScale = Vector3.Lerp(rightFaceOutTransform.transform.localScale, Vector3.one, (Time.time - transitionStartTime)/transitionDuration);
 			rightHalf.transform.localRotation = Quaternion.Lerp(rightFaceOutTransform.transform.localRotation, Quaternion.identity, (Time.time - transitionStartTime)/transitionDuration);
 			
-			if ( Vector3.Distance(rightHalf.transform.position, Vector3.zero) < Vector3.kEpsilon)
+			if ( Vector3.Distance(rightHalf.transform.localPosition, Vector3.zero) < Vector3.kEpsilon)
 			{
+				Debug.Log("fading in");
 				FadeInFacesWithMaterialID(0);
+				transitioningIn = false;
 			}
 		}
 		
