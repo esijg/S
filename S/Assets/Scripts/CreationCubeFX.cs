@@ -10,7 +10,8 @@ public class CreationCubeFX : MonoBehaviour
 	public float transitionDuration = 1.0f;
 	public float degreesPerFrame = 0.1f;
 	public Vector3 spinAxis = Vector3.one;
-
+	public GameObject cubeProxy;
+	
 	public Material[] materials;
 	public GameObject[] planes;
 	public Transform leftHalf, rightHalf;
@@ -34,7 +35,7 @@ public class CreationCubeFX : MonoBehaviour
 	void Awake()
 	{
 		int index = 0;
-		
+		cubeProxy.renderer.enabled = false;
 		foreach(Transform t in leftHalf){
 			if ( t.gameObject.name=="Plane") planes[index++] = t.gameObject;
 		}
@@ -45,6 +46,15 @@ public class CreationCubeFX : MonoBehaviour
 		
 		
 		startingColor = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+		
+		foreach (Transform t in leftHalf.transform)
+		{
+			if ( t.gameObject.GetComponent<Collider>() != null) t.collider.enabled = false;
+		}
+		foreach (Transform t in rightHalf.transform)
+		{
+			if ( t.gameObject.GetComponent<Collider>() != null) t.collider.enabled = false;
+		}
 		
 		foreach(GameObject o in planes)
 		{
@@ -115,8 +125,13 @@ public class CreationCubeFX : MonoBehaviour
 			if (completeFlag)
 			{
 				fadingIn = false;
-			//	spinning = true;
-				callingObject.OnCubeEffectTransitionInCompleted();
+				cubeProxy.transform.parent = null;
+				cubeProxy.renderer.enabled = true;
+				cubeProxy.collider.enabled = true;
+				callingObject.OnCubeEffectTransitionInCompleted(cubeProxy);
+
+				DestroyThis();
+
 			}
 		}
 	}
@@ -127,6 +142,16 @@ public class CreationCubeFX : MonoBehaviour
 			DestroyThis();
 			return;
 		}
+		
+		foreach (Transform t in leftHalf.transform)
+		{
+			if ( t.gameObject.GetComponent<Collider>() != null) t.collider.enabled = true;
+		}
+		foreach (Transform t in rightHalf.transform)
+		{
+			if ( t.gameObject.GetComponent<Collider>() != null) t.collider.enabled = true;
+		}
+		
 		transitioningIn = false;
 		transform.parent = null;
 		leftHalf.rigidbody.isKinematic = false;

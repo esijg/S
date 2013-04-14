@@ -12,9 +12,10 @@ public class SoundCubeCreator : MonoBehaviour {
 	
 	private GameObject currentCubeOutlineEffect;
 	private CreationCubeFX currentEffectsScript;
+	private GameObject soundCube;
 	
 	private CubeCreationState currentState = CubeCreationState.Completed;
-	
+	private float chargeLevel = 0.0f;
 	
 	void BeginCreatingCubeWithSoundID(int id)
 	{
@@ -31,30 +32,61 @@ public class SoundCubeCreator : MonoBehaviour {
 		
 	}
 	
-	public void OnCubeEffectTransitionInCompleted()
+	public void OnCubeEffectTransitionInCompleted(GameObject soundCube)
 	{
 		currentState = CubeCreationState.Configuring;
+		this.soundCube = soundCube;
+		soundCube.transform.parent = transform;
+		
 	}
 	
 	void Update()
 	{
-		if (Input.GetMouseButtonDown(0)){
+		if (Input.GetMouseButtonDown(0))
+		{
 			BeginCreatingCubeWithSoundID(0);
 		}
-		
-		if ( Input.GetMouseButtonUp(0)){
-			
-			EndCreatingCube();
+		if ( Input.GetMouseButtonUp(0))
+		{
+			if (currentState == CubeCreationState.EffectsIn)
+			{
+				AbortCreation();
+				EndCreatingCube();
+			}
+			else if ( currentState == CubeCreationState.Configuring)
+			{
+				EndCreatingCube();
+			}
 		}
+		
+		if ( currentState == CubeCreationState.Configuring && chargeLevel <= 0.4f)
+		{
+			chargeLevel += Time.deltaTime * 1;
+       		soundCube.transform.localScale = new Vector3(soundCube.transform.localScale.x+chargeLevel*0.5f, soundCube.transform.localScale.y+chargeLevel*0.5f, soundCube.transform.localScale.z+chargeLevel*0.5f);
+		}
+		
+		
+	}
+	
+	void AbortCreation()
+	{
+		currentEffectsScript.AbortEffect();
+		currentState = CubeCreationState.Completed;
 	}
 	
 	void EndCreatingCube()
 	{
-		if ( currentState == CubeCreationState.EffectsIn )
+		chargeLevel = 0.0f;
+		currentState = CubeCreationState.Completed;
+		
+		if ( soundCube != null )
 		{
-			currentEffectsScript.AbortEffect();
-			currentState = CubeCreationState.Completed;
+			soundCube.transform.parent = null;
+			soundCube.rigidbody.isKinematic = false;
+			soundCube.rigidbody.velocity = transform.forward;
 		}
+		
+		soundCube = null;
 	}
 
 }
