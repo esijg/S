@@ -1,5 +1,0 @@
-auto: true
-markdown: rdiscount
-rdiscount extensions: [smart]
-name: S
-description: Interartive

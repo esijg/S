@@ -1,0 +1,165 @@
+/* ----LAYOUT---- */
+body, h1, h2, h3, h4, h5, h6, ul, li, form {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 60%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+header {
+  text-align: center;
+  margin: 2em 0 2em 0;
+  padding: 0;
+}
+
+#logo {
+  font-family: 'BenchNine', sans-serif;
+  margin-bottom: 1em;
+}
+
+  nav {
+      font-weight: bold;
+  }
+
+  nav ul {
+    text-align: center;
+  }
+
+    nav ul li{
+      list-style: none;
+      list-style-image: none;
+      display:inline;
+    }
+
+    nav ul li a:link {
+      margin: 0.2em;
+      padding: 0.5em;
+    }
+
+  .content {
+    padding: 3em 0;
+    clear: both;
+  }
+
+    .content img {
+      max-height: 90%;
+      max-width: 100%;
+      width: auto;
+      display: block;
+      margin: 2em auto;
+}
+
+      .content .splash img {
+      max-height: 60%;
+    }
+
+    .content .splash .embed {
+      margin: 0 auto;
+      width: 300px;
+      display: block;
+    }
+
+  .blogpost-header h3 {
+    display: inline;
+  }
+
+hr {
+  margin-top: 5em;
+  border: 1px solid #002b36;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+/* ----COLOURS---- */
+body {
+}
+
+header {
+  color: #fff;
+}
+
+
+  header a:hover {
+    color: #cb4b16;
+  }
+
+  header li a {
+      background-color: #000;
+  }
+
+ a:link, a:visited, a:active
+{
+  color: #000;
+}
+
+nav ul li a:link, nav ul li a:visited, nav ul li header a:active
+{
+  color: #fff;
+}
+
+  a:hover {
+    color: #cb4b16;
+  }
+
+  nav ul li a:hover {
+    background-color: #cb4b16;
+  }
+
+footer {
+  text-align: center;
+}
+
+/* ----TYPOGRAPHY---- */
+body {
+  font-size: 20px;
+  line-height: 1.5em;
+  font-family: 'PT Serif', serif;
+  font-weight: 300;
+}
+
+nav a {
+  font-size: 1em; 
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+header a {text-decoration: none;}
+
+.content ul li {
+  list-style-type: bullet;
+  margin-left: 2em;
+}
+
+/* h1 {
+  font-size: 2em;
+  line-height: 0.75em;
+}
+
+h2 {
+  font-size: 1.75em;
+  line-height: 0.85em;
+}
+
+h3 {
+  font-size: 1.5em;
+  line-height: 1em;
+} */
+
+.blogpost-header a:link {
+  text-decoration: none;
+}
+
+.blogpost-header .date {
+  font-size: 0.8em;
+}

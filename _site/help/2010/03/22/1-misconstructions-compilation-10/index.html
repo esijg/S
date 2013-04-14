@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title>  Misconstructions - Compilation '10 |  Jóhannes Gunnar Þorsteinsson</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+
+  <link rel="stylesheet" href="/skin/circle.skin/circle.player.css">
+
+<link href="/skin/pink.flag/jplayer.pink.flag.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){
+
+  $("#jquery_jplayer_1").jPlayer({
+    ready: function (event) {
+      $(this).jPlayer("setMedia", {
+        m4a:"/files/audio/03-thrju.m4a",
+        oga:"/files/audio/03-thrju.ogg"
+      });
+    },
+    swfPath: "js",
+    supplied: "m4a, oga",
+    wmode: "window"
+  });
+});
+//]]>
+</script>
+ 
+</head>
+<body>
+  <div id="main">
+    <header>
+      <div id="logo">
+        <a href="/">
+          <img src="/img/logo.png" />
+        </a>
+        <h1>Jóhannes Gunnar Þorsteinsson</h1>
+      </div>
+      <nav role="navigation">
+        <ul id="nav">
+          <!--<li><a href="/">Home</a></li>-->
+          <li><a href="/blog/">Blog</a></li>
+          <!--<li><a href="/works/">My Works</a></li>-->
+          <li><a href="/me.html">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="content">
+      <h2>Misconstructions - Compilation '10</h2>
+<img src="" />
+<p><a href="/files/blog/01%20Misconstructions.mp3">Misconstructions</a></p>
+
+<p>The first installment in an ongoing series of downloadable songs which will, in the end of the year, as a whole, form a full online compilation release accompanied with artwork &amp; other bonuses. <em>(and possibly a physical release)</em></p>
+
+<p>And yes, the online releases are and will be <strong>free</strong>.</p>
+
+    </div>
+
+    <footer>
+    </footer>
+  </div>
+</body>
+</html>
