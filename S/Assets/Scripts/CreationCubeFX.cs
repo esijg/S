@@ -64,7 +64,7 @@ public class CreationCubeFX : MonoBehaviour
 	public void FadeInFacesWithMaterialID(int id)
 	{
 		startingColor = new Color(materials[id].color.r, materials[id].color.g, materials[id].color.b, 0.0f);
-		endingColor = materials[id].color;
+		endingColor = new Color(materials[id].color.r, materials[id].color.g, materials[id].color.b, 1.0f);
 		
 		foreach(GameObject o in planes)
 		{
@@ -98,7 +98,7 @@ public class CreationCubeFX : MonoBehaviour
 		
 		if (spinning)
 		{
-			gameObject.transform.RotateAroundLocal(spinAxis,degreesPerFrame);
+			gameObject.transform.RotateAround(spinAxis,degreesPerFrame);
 		}
 		
 		
@@ -115,7 +115,7 @@ public class CreationCubeFX : MonoBehaviour
 			if (completeFlag)
 			{
 				fadingIn = false;
-				spinning = true;
+			//	spinning = true;
 				callingObject.OnCubeEffectTransitionInCompleted();
 			}
 		}
