@@ -43,7 +43,7 @@ public class SoundCubeCreator : MonoBehaviour {
 		}
 		
 		if ( Input.GetMouseButtonUp(0)){
-			Destroy(currentCubeOutlineEffect);
+			
 			EndCreatingCube();
 		}
 	}

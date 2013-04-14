@@ -123,5 +123,19 @@ public class CreationCubeFX : MonoBehaviour
 	
 	public void AbortEffect()
 	{
+		if ( Vector3.Distance(rightHalf.transform.localPosition, Vector3.zero) > 4.0f ){
+			DestroyThis();
+			return;
+		}
+		transitioningIn = false;
+		transform.parent = null;
+		leftHalf.rigidbody.isKinematic = false;
+		rightHalf.rigidbody.isKinematic = false;
+		Invoke("DestroyThis", 1.0f);
+	}
+	
+	void DestroyThis()
+	{
+		Destroy(this.gameObject);
 	}
 }
