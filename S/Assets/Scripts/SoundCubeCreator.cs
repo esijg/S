@@ -24,8 +24,8 @@ public class SoundCubeCreator : MonoBehaviour {
 		
 		currentCubeOutlineEffect = GameObject.Instantiate(cubeOutlineEffectPrefab) as GameObject;
 		currentCubeOutlineEffect.transform.parent = transform;
-		currentCubeOutlineEffect.transform.localPosition = new Vector3(0,0,1);
-		currentCubeOutlineEffect.transform.LookAt(transform.position);
+		currentCubeOutlineEffect.transform.localPosition = new Vector3(0,0,3.0f);
+		currentCubeOutlineEffect.transform.localRotation = Quaternion.identity;
 		currentEffectsScript = currentCubeOutlineEffect.GetComponent<CreationCubeFX>();
 		currentEffectsScript.StartTransitionIn(this);
 		
@@ -38,11 +38,23 @@ public class SoundCubeCreator : MonoBehaviour {
 	
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.A))BeginCreatingCubeWithSoundID(0);
+		if (Input.GetMouseButtonDown(0)){
+			BeginCreatingCubeWithSoundID(0);
+		}
+		
+		if ( Input.GetMouseButtonUp(0)){
+			Destroy(currentCubeOutlineEffect);
+			EndCreatingCube();
+		}
 	}
 	
 	void EndCreatingCube()
 	{
+		if ( currentState == CubeCreationState.EffectsIn )
+		{
+			currentEffectsScript.AbortEffect();
+			currentState = CubeCreationState.Completed;
+		}
 	}
 
 }

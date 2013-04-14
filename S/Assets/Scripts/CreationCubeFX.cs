@@ -80,11 +80,11 @@ public class CreationCubeFX : MonoBehaviour
 		
 		if ( transitioningIn)
 		{
-			leftHalf.transform.localPosition = Vector3.Lerp(leftFaceOutTransform.transform.position, Vector3.zero, (Time.time - transitionStartTime)/transitionDuration);
+			leftHalf.transform.localPosition = Vector3.Lerp(leftFaceOutTransform.transform.localPosition, Vector3.zero, (Time.time - transitionStartTime)/transitionDuration);
 			leftHalf.transform.localScale = Vector3.Lerp(leftFaceOutTransform.transform.localScale, Vector3.one, (Time.time - transitionStartTime)/transitionDuration);
 			leftHalf.transform.localRotation = Quaternion.Lerp(leftFaceOutTransform.transform.localRotation, Quaternion.identity, (Time.time - transitionStartTime)/transitionDuration);
 			
-			rightHalf.transform.localPosition = Vector3.Lerp(rightFaceOutTransform.transform.position, Vector3.zero, (Time.time - transitionStartTime)/transitionDuration);
+			rightHalf.transform.localPosition = Vector3.Lerp(rightFaceOutTransform.transform.localPosition, Vector3.zero, (Time.time - transitionStartTime)/transitionDuration);
 			rightHalf.transform.localScale = Vector3.Lerp(rightFaceOutTransform.transform.localScale, Vector3.one, (Time.time - transitionStartTime)/transitionDuration);
 			rightHalf.transform.localRotation = Quaternion.Lerp(rightFaceOutTransform.transform.localRotation, Quaternion.identity, (Time.time - transitionStartTime)/transitionDuration);
 			
@@ -119,5 +119,9 @@ public class CreationCubeFX : MonoBehaviour
 				callingObject.OnCubeEffectTransitionInCompleted();
 			}
 		}
+	}
+	
+	public void AbortEffect()
+	{
 	}
 }
