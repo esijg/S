@@ -46,7 +46,7 @@ public class SoundCubeCreator : MonoBehaviour {
 		{
 			BeginCreatingCubeWithSoundID(0);
 		}
-		if ( Input.GetMouseButtonUp(0))
+		if ( !Input.GetMouseButton(0) && currentState != CubeCreationState.Completed)
 		{
 			if (currentState == CubeCreationState.EffectsIn)
 			{
