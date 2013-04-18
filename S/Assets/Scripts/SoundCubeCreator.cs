@@ -9,7 +9,7 @@ public class SoundCubeCreator : MonoBehaviour {
 	enum CubeCreationState{EffectsIn, Configuring, EffectsOut, Completed};
 	
 	public GameObject cubeOutlineEffectPrefab;
-	
+	public float chargeSpeed = 0.5f;
 	private GameObject currentCubeOutlineEffect;
 	private CreationCubeFX currentEffectsScript;
 	private GameObject soundCube;
@@ -59,9 +59,9 @@ public class SoundCubeCreator : MonoBehaviour {
 			}
 		}
 		
-		if ( currentState == CubeCreationState.Configuring && chargeLevel <= 0.4f)
+		if ( currentState == CubeCreationState.Configuring && chargeLevel <= 0.19f)
 		{
-			chargeLevel += Time.deltaTime * 1;
+			chargeLevel += Time.deltaTime * chargeSpeed;
        		soundCube.transform.localScale = new Vector3(soundCube.transform.localScale.x+chargeLevel*0.5f, soundCube.transform.localScale.y+chargeLevel*0.5f, soundCube.transform.localScale.z+chargeLevel*0.5f);
 		}
 		
