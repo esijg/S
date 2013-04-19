@@ -31,6 +31,25 @@ public class CreationCubeFX : MonoBehaviour
 	//spinning vars
 	private bool spinning = false;
 	
+	public void SetCubePrefab(GameObject prefab)
+	{
+		Vector3 pos = cubeProxy.transform.position;
+		Vector3 localScale = cubeProxy.transform.localScale;
+		Quaternion rot = cubeProxy.transform.rotation;
+		
+		Destroy(cubeProxy);
+		
+		cubeProxy = GameObject.Instantiate(prefab) as GameObject;
+		cubeProxy.rigidbody.isKinematic = true;
+		cubeProxy.collider.enabled = false;
+		cubeProxy.renderer.enabled = false;
+		cubeProxy.transform.position = pos;
+		cubeProxy.transform.localScale = localScale;
+		cubeProxy.transform.rotation = rot;
+		
+		cubeProxy.transform.parent = transform;
+		
+	}
 	
 	void Awake()
 	{

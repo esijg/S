@@ -9,6 +9,7 @@ public class SoundCubeCreator : MonoBehaviour {
 	enum CubeCreationState{EffectsIn, Configuring, EffectsOut, Completed};
 	
 	public GameObject cubeOutlineEffectPrefab;
+	
 	public float chargeSpeed = 0.5f;
 	private GameObject currentCubeOutlineEffect;
 	private CreationCubeFX currentEffectsScript;
@@ -16,6 +17,14 @@ public class SoundCubeCreator : MonoBehaviour {
 	
 	private CubeCreationState currentState = CubeCreationState.Completed;
 	private float chargeLevel = 0.0f;
+	
+	private GameObject selectedPrefab;
+	
+	
+	public void SetSelectedPrefab(GameObject prefab)
+	{
+		selectedPrefab = prefab;
+	}
 	
 	void BeginCreatingCubeWithSoundID(int id)
 	{
@@ -28,6 +37,7 @@ public class SoundCubeCreator : MonoBehaviour {
 		currentCubeOutlineEffect.transform.localPosition = new Vector3(0,0,3.0f);
 		currentCubeOutlineEffect.transform.localRotation = Quaternion.identity;
 		currentEffectsScript = currentCubeOutlineEffect.GetComponent<CreationCubeFX>();
+		currentEffectsScript.SetCubePrefab(selectedPrefab);
 		currentEffectsScript.StartTransitionIn(this);
 		
 	}
@@ -62,6 +72,7 @@ public class SoundCubeCreator : MonoBehaviour {
 		if ( currentState == CubeCreationState.Configuring && chargeLevel <= 0.19f)
 		{
 			chargeLevel += Time.deltaTime * chargeSpeed;
+			soundCube.audio.volume = chargeLevel*4;
        		soundCube.transform.localScale = new Vector3(soundCube.transform.localScale.x+chargeLevel*0.5f, soundCube.transform.localScale.y+chargeLevel*0.5f, soundCube.transform.localScale.z+chargeLevel*0.5f);
 		}
 		
@@ -81,7 +92,9 @@ public class SoundCubeCreator : MonoBehaviour {
 		
 		if ( soundCube != null )
 		{
+			Debug.Log("End creation");
 			soundCube.transform.parent = null;
+			soundCube.audio.Play();
 			soundCube.rigidbody.isKinematic = false;
 			soundCube.rigidbody.velocity = transform.forward;
 		}
