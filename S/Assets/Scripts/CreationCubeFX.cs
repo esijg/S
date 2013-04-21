@@ -51,7 +51,7 @@ public class CreationCubeFX : MonoBehaviour
 		
 	}
 	
-	void Awake()
+	void Start()
 	{
 		int index = 0;
 		cubeProxy.renderer.enabled = false;

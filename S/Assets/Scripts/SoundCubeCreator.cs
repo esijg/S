@@ -28,7 +28,7 @@ public class SoundCubeCreator : MonoBehaviour {
 	
 	void BeginCreatingCubeWithSoundID(int id)
 	{
-		EndCreatingCube();
+		EndCreatingCube(false);
 		
 		currentState = CubeCreationState.EffectsIn;
 		
@@ -52,7 +52,7 @@ public class SoundCubeCreator : MonoBehaviour {
 	
 	void Update()
 	{
-		if (Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(0) && !Input.GetMouseButton(1))
 		{
 			BeginCreatingCubeWithSoundID(0);
 		}
@@ -61,11 +61,23 @@ public class SoundCubeCreator : MonoBehaviour {
 			if (currentState == CubeCreationState.EffectsIn)
 			{
 				AbortCreation();
-				EndCreatingCube();
+				EndCreatingCube(false);
 			}
 			else if ( currentState == CubeCreationState.Configuring)
 			{
-				EndCreatingCube();
+				EndCreatingCube(false);
+			}
+		}
+		else if (Input.GetMouseButton(0) && Input.GetMouseButtonDown(1))
+		{
+			if (currentState == CubeCreationState.EffectsIn)
+			{
+				AbortCreation();
+				EndCreatingCube(true);
+			}
+			else if ( currentState == CubeCreationState.Configuring)
+			{
+				EndCreatingCube(true);
 			}
 		}
 		
@@ -85,7 +97,7 @@ public class SoundCubeCreator : MonoBehaviour {
 		currentState = CubeCreationState.Completed;
 	}
 	
-	void EndCreatingCube()
+	void EndCreatingCube(bool thrown)
 	{
 		chargeLevel = 0.0f;
 		currentState = CubeCreationState.Completed;
@@ -96,7 +108,12 @@ public class SoundCubeCreator : MonoBehaviour {
 			soundCube.transform.parent = null;
 			soundCube.audio.Play();
 			soundCube.rigidbody.isKinematic = false;
-			soundCube.rigidbody.velocity = transform.forward;
+			
+			
+			if (thrown)
+			{
+				soundCube.rigidbody.velocity = transform.forward*10;
+			}
 		}
 		
 		soundCube = null;
