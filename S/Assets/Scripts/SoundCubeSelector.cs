@@ -4,7 +4,8 @@ using System.Collections;
 public class SoundCubeSelector : MonoBehaviour {
 	
 	public SoundCubeCreator soundCubeCreator;
-	
+	public GUITexture vignetteTexture;
+	public Texture2D[] vignetteTextures;
 	public GameObject[] soundCubePrefabs;
 	
 	int selectedIndex = 0;
@@ -28,7 +29,7 @@ public class SoundCubeSelector : MonoBehaviour {
 			{
 				selectedIndex = soundCubePrefabs.Length-1;
 			}
-	
+			vignetteTexture.texture = vignetteTextures[selectedIndex];
 			SelectWeapon(selectedIndex);
 			
 		}
@@ -44,7 +45,8 @@ public class SoundCubeSelector : MonoBehaviour {
 			{
 				selectedIndex = 0;
 			}
-	
+			
+			vignetteTexture.texture = vignetteTextures[selectedIndex];
 	        SelectWeapon(selectedIndex);
 	
 		}

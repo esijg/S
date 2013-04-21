@@ -107,6 +107,7 @@ public class SoundCubeCreator : MonoBehaviour {
 			Debug.Log("End creation");
 			soundCube.transform.parent = null;
 			soundCube.audio.Play();
+			Debug.Log(soundCube.audio.isPlaying);
 			soundCube.rigidbody.isKinematic = false;
 			
 			
