@@ -84,7 +84,10 @@ public class SoundCubeCreator : MonoBehaviour {
 		if ( currentState == CubeCreationState.Configuring && chargeLevel <= 0.19f)
 		{
 			chargeLevel += Time.deltaTime * chargeSpeed;
-			soundCube.audio.volume = chargeLevel*4;
+			if( chargeLevel < 0.1f ) chargeLevel = 0.1f;
+			if ( chargeLevel > 3.0f ) chargeLevel = 3.0f;
+			soundCube.audio.pitch = chargeLevel*16;
+
        		soundCube.transform.localScale = new Vector3(soundCube.transform.localScale.x+chargeLevel*0.5f, soundCube.transform.localScale.y+chargeLevel*0.5f, soundCube.transform.localScale.z+chargeLevel*0.5f);
 		}
 		
