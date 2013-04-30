@@ -19,7 +19,7 @@ public class SoundCubeCreator : MonoBehaviour {
 	private float chargeLevel = 0.0f;
 	
 	private GameObject selectedPrefab;
-	
+
 	
 	public void SetSelectedPrefab(GameObject prefab)
 	{
@@ -47,6 +47,8 @@ public class SoundCubeCreator : MonoBehaviour {
 		currentState = CubeCreationState.Configuring;
 		this.soundCube = soundCube;
 		soundCube.transform.parent = transform;
+		soundCube.audio.pitch = 0.0f;
+		chargeLevel = 0.0f;
 		
 	}
 	
@@ -81,14 +83,13 @@ public class SoundCubeCreator : MonoBehaviour {
 			}
 		}
 		
-		if ( currentState == CubeCreationState.Configuring && chargeLevel <= 0.19f)
+		if ( currentState == CubeCreationState.Configuring && chargeLevel <= 5.0f)
 		{
-			chargeLevel += Time.deltaTime * chargeSpeed;
-			if( chargeLevel < 0.01f ) chargeLevel = 0.01f;
-			if ( chargeLevel > 0.5f ) chargeLevel = 3.0f;
-			soundCube.audio.pitch = chargeLevel*16;
+			
+			chargeLevel+=Time.deltaTime;
+			soundCube.audio.pitch= 0.0f + chargeLevel;
 
-       		soundCube.transform.localScale = new Vector3(soundCube.transform.localScale.x+chargeLevel*0.5f, soundCube.transform.localScale.y+chargeLevel*0.5f, soundCube.transform.localScale.z+chargeLevel*0.5f);
+       		soundCube.transform.localScale = new Vector3(soundCube.transform.localScale.x+ Time.deltaTime*0.2f, soundCube.transform.localScale.y+ Time.deltaTime*0.2f, soundCube.transform.localScale.z+ Time.deltaTime*0.2f);
 		}
 		
 		
@@ -104,7 +105,7 @@ public class SoundCubeCreator : MonoBehaviour {
 	{
 		chargeLevel = 0.0f;
 		currentState = CubeCreationState.Completed;
-		
+
 		if ( soundCube != null )
 		{
 			Debug.Log("End creation");
