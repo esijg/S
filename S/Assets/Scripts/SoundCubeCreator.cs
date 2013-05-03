@@ -83,13 +83,13 @@ public class SoundCubeCreator : MonoBehaviour {
 			}
 		}
 		
-		if ( currentState == CubeCreationState.Configuring && chargeLevel <= 5.0f)
+		if ( currentState == CubeCreationState.Configuring && chargeLevel <= 4.0f)
 		{
 			
 			chargeLevel+=Time.deltaTime;
 			soundCube.audio.pitch= 0.0f + chargeLevel;
 
-       		soundCube.transform.localScale = new Vector3(soundCube.transform.localScale.x+ Time.deltaTime*0.2f, soundCube.transform.localScale.y+ Time.deltaTime*0.2f, soundCube.transform.localScale.z+ Time.deltaTime*0.2f);
+       		soundCube.transform.localScale = new Vector3(soundCube.transform.localScale.x+ Time.deltaTime*0.25f, soundCube.transform.localScale.y+ Time.deltaTime*0.25f, soundCube.transform.localScale.z+ Time.deltaTime*0.25f);
 		}
 		
 		
