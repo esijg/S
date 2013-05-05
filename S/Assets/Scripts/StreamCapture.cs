@@ -3,7 +3,9 @@ using System.Collections;
 
 public class StreamCapture : MonoBehaviour {
 	public int requiredSoundCubeID = 0;
-	
+	public ParticleSystem powerCord;
+	public GameObject cubeSkeletonLeft, cubeSkeletonRight;
+	public Material onMaterial;
 	// Use this for initialization
 	void Start () {
 	
@@ -22,7 +24,12 @@ public class StreamCapture : MonoBehaviour {
 			{
 				other.gameObject.rigidbody.velocity = Vector3.zero;
 				other.gameObject.rigidbody.isKinematic = true;
+				Destroy(other.gameObject);
+				
+				Destroy(cubeSkeletonLeft.transform.parent.gameObject);				
+				renderer.material = onMaterial;
 				SpiritStatus.AdvanceState();
+				powerCord.Play();
 			}
 			else
 			{

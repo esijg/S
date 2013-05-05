@@ -16,8 +16,18 @@ public class SmoothFollowTransform : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!enabled)return;
-		
-		transform.position = Vector3.MoveTowards(transform.position, target.position+desiredOffsetFromTarget, maxDistanceDelta);
+		if ( Vector3.Distance(transform.position, target.position) > desiredOffsetFromTarget.magnitude*5)
+		{
+			Vector3 desired = target.position + target.forward*-15+desiredOffsetFromTarget;
+			desired = new Vector3(desired.x, target.position.y+desiredOffsetFromTarget.y, desired.z);
+			transform.position = Vector3.MoveTowards(transform.position, desired, maxDistanceDelta*10);
+		}
+		if ( Vector3.Distance(transform.position, target.position) > desiredOffsetFromTarget.magnitude)
+		{
+			Vector3 desired = target.position + target.forward*-15+desiredOffsetFromTarget;
+			desired = new Vector3(desired.x, target.position.y+desiredOffsetFromTarget.y, desired.z);
+			transform.position = Vector3.MoveTowards(transform.position, desired, maxDistanceDelta);
+		}
 	}
 	
 	public void StartFollowing()

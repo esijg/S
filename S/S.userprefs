@@ -1,15 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SoundCubeID.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../ShaderTestBed/Assets/UnityCookie/Beginner/N2P - 1 - Flat Color/_Practice/TestBed-DistanceFromPlayer.shader">
     <Files>
-      <File FileName="Assets/Scripts/SoundCubeID.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SoundCubeCreator.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SoundCubeSelector.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/CreationCubeFX.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SpiritHover.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/StreamCapture.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SmoothFollowTransform.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Pitch.js" Line="1" Column="1" />
+      <File FileName="../../ShaderTestBed/Assets/UnityCookie/Beginner/N2P - 1 - Flat Color/_Practice/TestBed-DistanceFromPlayer.shader" Line="53" Column="2" />
+      <File FileName="../../ShaderTestBed/Assets/UnityCookie/Beginner/N2P - 2 - Lambertan Shading/_Lesson/UC-Lambert.shader" Line="28" Column="24" />
+      <File FileName="../../ShaderTestBed/Assets/UnityCookie/Beginner/N2P - 1 - Flat Color/_Lesson/UC-FlatColor.shader" Line="8" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

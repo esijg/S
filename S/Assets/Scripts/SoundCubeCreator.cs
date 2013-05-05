@@ -88,7 +88,7 @@ public class SoundCubeCreator : MonoBehaviour {
 			
 			chargeLevel+=Time.deltaTime;
 			soundCube.audio.pitch= 0.0f + chargeLevel;
-
+			soundCube.collider.enabled = true;
        		soundCube.transform.localScale = new Vector3(soundCube.transform.localScale.x+ Time.deltaTime*0.25f, soundCube.transform.localScale.y+ Time.deltaTime*0.25f, soundCube.transform.localScale.z+ Time.deltaTime*0.25f);
 		}
 		

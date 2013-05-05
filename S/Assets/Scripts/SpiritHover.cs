@@ -30,7 +30,7 @@ public class SpiritStatus
 }
 
 public class SpiritHover : MonoBehaviour {
-	
+	public bool forceOn = false;
 	bool goingUp = false;
 	float delta = 0.0f;
 	public Transform player;
@@ -44,13 +44,13 @@ public class SpiritHover : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if ( SpiritStatus.followingGaze)
+		if ( SpiritStatus.followingGaze ||forceOn)
 		{	
 			transform.LookAt(player.transform.position);
 			transform.rotation = Quaternion.Euler(0.0f, transform.rotation.eulerAngles.y+90.0f, 0.0f);
 		}
 		
-		if ( SpiritStatus.powered)
+		if ( SpiritStatus.powered ||forceOn)
 		{
 			if (particleSystem.isPlaying == false)
 			{
@@ -72,7 +72,7 @@ public class SpiritHover : MonoBehaviour {
 			}
 		}
 		
-		if (SpiritStatus.followingPlayer)
+		if (SpiritStatus.followingPlayer ||forceOn)
 		{
 			if (followScript.enabled == false )followScript.StartFollowing();
 		}
