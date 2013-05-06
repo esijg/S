@@ -4,12 +4,24 @@ ModelImporter:
   serializedVersion: 15
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Trollhead_Raw
+    100004: Trollhead_Unity
     400000: //RootNode
+    400002: Trollhead_Raw
+    400004: Trollhead_Unity
     2300000: //RootNode
+    2300002: Trollhead_Raw
+    2300004: Trollhead_Unity
     3300000: //RootNode
+    3300002: Trollhead_Raw
+    3300004: Trollhead_Unity
     4300000: Base
     4300002: Cube
+    4300004: Trollhead_Raw
+    4300006: Trollhead_Unity
     6400000: //RootNode
+    6400002: Trollhead_Raw
+    6400004: Trollhead_Unity
     7400000: Default Take
     9500000: //RootNode
   materials:
@@ -32,8 +44,8 @@ ModelImporter:
     meshCompression: 0
     addColliders: 1
     importBlendShapes: 1
-    swapUVChannels: 0
-    generateSecondaryUV: 0
+    swapUVChannels: 1
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     weldVertices: 1
