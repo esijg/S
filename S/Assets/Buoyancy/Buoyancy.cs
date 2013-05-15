@@ -32,13 +32,14 @@ public class Buoyancy : MonoBehaviour {
 	private float drag;
 	private float angularDrag;
 	 
-	void Start () {
+	void OnEnable () {
 		cg = Vector3.zero;
 		/*
 		//DEV
 		rigidbody.AddTorque(Random.insideUnitSphere*10,ForceMode.VelocityChange);
 		//
 		*/
+		
 		rigidbody.SetDensity(density);
 		rigidbody.centerOfMass = cg;
 		
