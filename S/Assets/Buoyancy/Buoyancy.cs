@@ -39,8 +39,10 @@ public class Buoyancy : MonoBehaviour {
 		rigidbody.AddTorque(Random.insideUnitSphere*10,ForceMode.VelocityChange);
 		//
 		*/
-		
+		try{
 		rigidbody.SetDensity(density);
+		}
+		catch(System.Exception e){}
 		rigidbody.centerOfMass = cg;
 		
 		lSqr = transform.localScale.magnitude * transform.localScale.magnitude;
