@@ -10,6 +10,7 @@ public class ToggleWaterRenderer : MonoBehaviour {
 	bool topEnabled = true;
 	public ScreenOverlay waterOverlay;
 	public Transform playerPosition;
+	public AudioReverbZone waterReverbZone;
 	
 	void Update()
 	{
@@ -19,6 +20,7 @@ public class ToggleWaterRenderer : MonoBehaviour {
 			if (topEnabled)
 			{
 				topEnabled = false;
+				waterReverbZone.enabled = true;
 				topWater.renderer.enabled = false;
 				bottomWater.renderer.enabled = true;
 				waterOverlay.enabled = true;
@@ -30,6 +32,7 @@ public class ToggleWaterRenderer : MonoBehaviour {
 			if (!topEnabled)
 			{
 				topEnabled = true;
+				waterReverbZone.enabled = false;
 				topWater.renderer.enabled = true;
 				bottomWater.renderer.enabled = false;
 				waterOverlay.enabled = false;
