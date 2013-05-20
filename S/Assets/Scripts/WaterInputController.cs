@@ -17,29 +17,25 @@ public class WaterInputController : MonoBehaviour {
 	void Update () {
 		if (Input.anyKey && floatScript.enabled)
 		{
-			this.gameObject.GetComponent<Buoyancy>().enabled = false;
+			waterCollider.GetComponent<Buoyancy>().enabled = false;
 			
 		}
 		else if (Input.anyKey && transform.position.y < bottomWater.transform.position.y)
 		{
 			underwater = true;
-			waterCollider.rigidbody.isKinematic = false;
-			rigidbody.useGravity = false;
-			rigidbody.isKinematic = true;
+			waterCollider.rigidbody.useGravity = false;
 		}
 		
 		if (underwater && transform.position.y > bottomWater.transform.position.y)
 		{
 			underwater = false;
-			rigidbody.useGravity = true;
-			rigidbody.isKinematic = false;
-			waterCollider.collider.enabled = false;
-			waterCollider.rigidbody.isKinematic = true;
+			waterCollider.rigidbody.useGravity = true;
+			waterCollider.rigidbody.isKinematic = false;
 		}
 		
 		if (!Input.anyKey && !floatScript.enabled)
 		{
-			this.gameObject.GetComponent<Buoyancy>().enabled = true;
+			waterCollider.GetComponent<Buoyancy>().enabled = true;
 		}
 		else if (!Input.anyKey)
 		{
@@ -54,7 +50,6 @@ public class WaterInputController : MonoBehaviour {
 		{
 			if (Input.anyKey)
 			{
-				if (waterCollider.rigidbody.isKinematic == true) waterCollider.rigidbody.isKinematic = false;
 				if (Input.GetKey(KeyCode.W)) waterCollider.rigidbody.velocity = Camera.mainCamera.transform.forward;
 				if (Input.GetKey(KeyCode.A)) waterCollider.rigidbody.velocity = Camera.mainCamera.transform.right*-1;
 				if (Input.GetKey(KeyCode.D)) waterCollider.rigidbody.velocity = Camera.mainCamera.transform.right;
@@ -66,10 +61,8 @@ public class WaterInputController : MonoBehaviour {
 				{
 					waterCollider.rigidbody.velocity = Vector3.zero;
 					floatScript.enabled = true;
-					rigidbody.useGravity = true;
-					rigidbody.isKinematic = false;
-					waterCollider.collider.enabled = false;
-					waterCollider.rigidbody.isKinematic = true;
+					waterCollider.rigidbody.useGravity = true;
+				
 				}
 			}
 		}
@@ -79,11 +72,26 @@ public class WaterInputController : MonoBehaviour {
 	{
 		if (other.gameObject.name == "Water")
 		{
-			this.gameObject.GetComponent<ConfigurableFPSWalker>().enabled = false;
-			rigidbody.useGravity = true;
-			rigidbody.velocity = Vector3.up*-4;
+			if (!waterCollider.collider.enabled)
+			{
+							waterCollider.collider.enabled = true;
+
+				Invoke("StartFloating", 0.4f);
+			}
 		}
 	}
+	
+	void StartFloating()
+	{
+		this.gameObject.GetComponent<ConfigurableFPSWalker>().enabled = false;
+			transform.parent = null;
+			waterCollider.transform.position = transform.position;
+			transform.parent = waterCollider.transform;
+			transform.localPosition = Vector3.zero;
+			waterCollider.rigidbody.useGravity = true;		
+			waterCollider.collider.enabled = true;
+	}
+	
 	
 	void OnTriggerExit(Collider other)
 	{
