@@ -14,13 +14,14 @@ public class SpecificCubeInteraction : MonoBehaviour {
 	public Material cubeSkeletonMaterial;
 	public AudioSource cubeSource;
 	public GameObject skeleton;
-	
+	public Material lightningMaterial;
 	Color neutralColor;
 	bool activating = false;
 	bool failing = false;
 	float failTime = 0.0f;
 	// Use this for initialization
 	void Start () {
+		lightningMaterial.color = new Color(1.0f, 1.0f,1.0f, 0.1f);
 
 		neutralColor = new Color(115/255.0f, 115/255.0f, 115/255.0f, 1.0f);
 	}
@@ -31,13 +32,28 @@ public class SpecificCubeInteraction : MonoBehaviour {
 	
 		if (activating)
 		{
-			cubeSkeletonMaterial.color = Color.Lerp(neutralColor, Color.white, (Time.time - failTime)/1.0f);
+			cubeSkeletonMaterial.color = Color.Lerp(neutralColor, Color.white, (Time.time - failTime)/2.0f);
+			lightningMaterial.color = Color.Lerp(new Color(1.0f, 1.0f, 1.0f, 0.1f), Color.white, (Time.time - failTime)/2.0f);
+			cubeSource.volume += 0.04f;
+
+			if ( Time.time - failTime > 2.0f && particleSystem.isPlaying == false)
+			{
+				particleSystem.Play();
+
+			}
+			else if (Time.time - failTime > 2.0f)
+			{
+				cubeSource.volume -= 0.02f;
+
+			}
+			else cubeSource.volume += 0.04f;
+
 		}
-		
+		if (activating)return;
 		if (failing)
 		{
 			
-			cubeSource.volume += 0.02f;
+			cubeSource.volume += 0.04f;
 			
 			cubeSkeletonMaterial.color = Color.Lerp(neutralColor, Color.red, (Time.time - failTime)/1.0f);
 			if (Time.time - failTime  > 1.0f)
@@ -57,7 +73,6 @@ public class SpecificCubeInteraction : MonoBehaviour {
 	void Activate(GameObject cube)
 	{
 		renderer.enabled = true;
-		particleSystem.Play();
 		failTime = Time.time;
 		cubeSource.volume = 0.0f;
 		activating = true;
