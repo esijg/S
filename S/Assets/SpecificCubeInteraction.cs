@@ -60,6 +60,8 @@ public class SpecificCubeInteraction : MonoBehaviour {
 			{
 				failTime = Time.time;
 				failing = false;
+				cubeSource.volume -= 0.04f;
+				
 			}
 		}
 		else if (!activating)
@@ -80,10 +82,12 @@ public class SpecificCubeInteraction : MonoBehaviour {
 		cube.rigidbody.velocity = Vector3.zero;
 		cube.rigidbody.useGravity = false;
 		cube.rigidbody.isKinematic = true;
+		cube.rigidbody.constraints = RigidbodyConstraints.FreezePosition;
 		cube.rigidbody.angularVelocity = Vector3.zero;
 		cube.collider.enabled = false;
 		correctSoundSource.enabled = true;
 		correctSoundSource.Play();
+		cube.audio.Stop();
 		
 		
 	}
