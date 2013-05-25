@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/CylinderPuzzle.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/CylinderPuzzlePiece.cs">
     <Files>
       <File FileName="../../ShaderTestBed/Assets/UnityCookie/Beginner/N2P - 1 - Flat Color/_Practice/TestBed-DistanceFromPlayer.shader" Line="53" Column="2" />
       <File FileName="../../ShaderTestBed/Assets/UnityCookie/Beginner/N2P - 2 - Lambertan Shading/_Lesson/UC-Lambert.shader" Line="28" Column="23" />
@@ -13,8 +13,9 @@
       <File FileName="Assets/Standard Assets/Scripts/ConfigurableFPSWalker.js" Line="1" Column="1" />
       <File FileName="Assets/jsfloater_166.js" Line="1" Column="1" />
       <File FileName="Assets/SpecificCubeInteraction.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/PressurePlate.cs" Line="41" Column="1" />
+      <File FileName="Assets/Scripts/PressurePlate.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/CylinderPuzzle.cs" Line="5" Column="2" />
+      <File FileName="Assets/Scripts/CylinderPuzzlePiece.cs" Line="41" Column="82" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

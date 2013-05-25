@@ -44,7 +44,7 @@ public class CylinderPuzzlePiece : MonoBehaviour {
 				streamEmitter.enabled = true;
 				activated = true;
 				time = Time.time;
-				parentPuzzle.PieceActivated();
+				if (parentPuzzle != null)parentPuzzle.PieceActivated();
 			}
 		}
 	}
