@@ -1,17 +1,22 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/WorldState.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PersistentCubeSlot.cs">
     <Files>
       <File FileName="../../ShaderTestBed/Assets/UnityCookie/Beginner/N2P - 2 - Lambertan Shading/_Lesson/UC-Lambert.shader" Line="28" Column="23" />
       <File FileName="../../ShaderTestBed/Assets/UnityCookie/Beginner/N2P - 1 - Flat Color/_Lesson/UC-FlatColor.shader" Line="8" Column="3" />
       <File FileName="../../ShaderTestBed/Assets/UnityCookie/Beginner/N2P - 2 - Lambertan Shading/_Lesson/TestBed-ReverseLambert.shader" Line="16" Column="25" />
       <File FileName="../../ShaderTestBed/Assets/UnityCookie/Beginner/N2P - 3 - Specular/_Lesson/UC-Specular.shader" Line="10" Column="4" />
-      <File FileName="Assets/Scripts/WaterInputController.cs" Line="124" Column="3" />
+      <File FileName="Assets/Scripts/WaterInputController.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/ToggleWaterRenderer.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/WaterExit.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/CylinderPuzzlePiece.cs" Line="1" Column="1" />
       <File FileName="Assets/Buoyancy/Buoyancy.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/WorldState.cs" Line="6" Column="38" />
+      <File FileName="Assets/Scripts/WorldState.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/MoveWater.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PressurePlate.cs" Line="1" Column="1" />
+      <File FileName="Assets/SpecificCubeInteraction.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/SoundCubeID.cs" Line="12" Column="49" />
+      <File FileName="Assets/Scripts/CylinderPuzzlePiece.cs" Line="28" Column="54" />
+      <File FileName="Assets/Scripts/PersistentCubeSlot.cs" Line="54" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

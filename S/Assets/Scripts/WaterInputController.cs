@@ -116,13 +116,14 @@ public class WaterInputController : MonoBehaviour {
 	
 	public void StopFloating()
 	{
+		if (jumping){
 			underwater = false;
 			this.gameObject.GetComponent<ConfigurableFPSWalker>().enabled = true;
 			waterCollider.collider.enabled = false;
 			waterCollider.rigidbody.isKinematic = true;
 			transform.localPosition = Vector3.zero;
 		
-		
+		}
 	}
 	
 	void StartFloating()
