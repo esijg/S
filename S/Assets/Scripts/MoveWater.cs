@@ -9,6 +9,9 @@ public class MoveWater : MonoBehaviour {
 	
 	public float maxDistanceDelta = 1.0f;
 	public bool testBottom = false;
+	public bool testTop = false;
+	
+	public GameObject waterObject;
 	// Use this for initialization
 	void Start () {
 	
@@ -22,18 +25,18 @@ public class MoveWater : MonoBehaviour {
 	
 	void FixedUpdate()
 	{
-			if (WorldState.streamsSolved < 3 && !testBottom)
+		if (WorldState.streamsSolved < 3 && !testBottom && !testTop)
 		{
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, middleY, transform.position.z), maxDistanceDelta);		
 		}
-		else if (WorldState.streamsSolved == 3 || testBottom)
+		else if ((WorldState.streamsSolved == 3 || testBottom) &&!testTop)
 		{
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, bottomY, transform.position.z), maxDistanceDelta);		
-			if (transform.position.y <= bottomY+2) collider.enabled = false;
+			if (transform.position.y <= bottomY+2) waterObject.collider.enabled = false;
 		}
-		else if (WorldState.streamsSolved == 4)
+		else if (WorldState.streamsSolved == 4 ||testTop)
 		{
-			collider.enabled = true;
+			waterObject.collider.enabled = true;
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, topY, transform.position.z), maxDistanceDelta);		
 		}
 	}
