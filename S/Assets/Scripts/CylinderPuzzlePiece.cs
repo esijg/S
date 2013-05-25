@@ -39,6 +39,7 @@ public class CylinderPuzzlePiece : MonoBehaviour {
 				if (numActivated == 4)
 				{
 					GameObject.Find("Stream 2").GetComponent<ParticleRenderer>().enabled = true;
+					WorldState.streamsSolved++;
 				}
 				Debug.Log("Activated");
 				streamEmitter.enabled = true;

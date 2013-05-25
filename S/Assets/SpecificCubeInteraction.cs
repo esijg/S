@@ -85,6 +85,7 @@ public class SpecificCubeInteraction : MonoBehaviour {
 		correctSoundSource.enabled = true;
 		correctSoundSource.Play();
 		
+		
 	}
 	
 	void Fail(GameObject cube)
@@ -101,7 +102,11 @@ public class SpecificCubeInteraction : MonoBehaviour {
 		{
 			if (collider.gameObject.GetComponent<SoundCubeID>().id == targetId)
 			{
-				Activate(collider.gameObject);
+				if (!activating)
+				{
+					Activate(collider.gameObject);
+					WorldState.streamsSolved++;
+				}
 			}
 			else Fail(collider.gameObject);
 		}

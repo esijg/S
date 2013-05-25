@@ -38,9 +38,13 @@ public class PressurePlate : MonoBehaviour {
 			
 			if (currentWeight >= neededWeight) 
 			{
-				activatedSystem.enabled = true;
-				activationTime = Time.time;
-				activated = true;
+				if (!activated)
+				{
+					WorldState.streamsSolved++;
+					activatedSystem.enabled = true;
+					activationTime = Time.time;
+					activated = true;
+				}
 			}
 		}
 	}
