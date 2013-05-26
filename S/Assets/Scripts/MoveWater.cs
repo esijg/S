@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class MoveWater : MonoBehaviour {
-	
+	public static bool isMoving = false;
 	public float middleY = 0.0f;
 	public float bottomY = 0.0f;
 	public float topY = 0.0f;
@@ -31,12 +31,14 @@ public class MoveWater : MonoBehaviour {
 		}
 		else if ((WorldState.streamsSolved == 3 || testBottom) &&!testTop)
 		{
+			isMoving = true;
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, bottomY, transform.position.z), maxDistanceDelta);		
 			if (transform.position.y <= bottomY+2) waterObject.collider.enabled = false;
 		}
 		else if ((WorldState.streamsSolved == 4 && WorldState.teleported) ||testTop)
 		{
 			waterObject.collider.enabled = true;
+			isMoving = true;
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, topY, transform.position.z), maxDistanceDelta);		
 		}
 	}

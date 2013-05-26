@@ -13,6 +13,7 @@ public class WaterExit : MonoBehaviour {
 		if (collision.gameObject.tag == "World" )
 		{
 			controller.StopFloating();
+			transform.parent = null;
 		}
 	}
 	
@@ -21,6 +22,7 @@ public class WaterExit : MonoBehaviour {
 		if (other.gameObject.name == "Water")
 		{
 			controller.HitWater();
+			transform.parent = GameObject.Find("WaterLine").transform;
 		}
 
 	}

@@ -121,6 +121,10 @@ public class WaterInputController : MonoBehaviour {
 	public void StopFloating()
 	{
 		jumping = false;
+		if (MoveWater.isMoving)
+		{
+			swimming = false;
+		}
 		if ( transform.position.y > bottomWater.transform.position.y || !swimming)
 		{
 			underwater = false;
