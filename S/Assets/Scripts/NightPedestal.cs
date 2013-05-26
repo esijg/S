@@ -7,6 +7,7 @@ public class NightPedestal : MonoBehaviour {
 	public Light sun;
 	bool activated = false;
 	float animDuration = 8.0f;
+	public GameObject moon;
 	
 	Color lightColor;
 	Color camColor;
@@ -37,6 +38,7 @@ public class NightPedestal : MonoBehaviour {
 		{
 			time = Time.time;
 			activated = true;
+			moon.SetActive(true);
 			Invoke("KillFog", animDuration);
 		}
 	}
