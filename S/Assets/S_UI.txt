@@ -1,0 +1,36 @@
+{"frames": {
+
+"hideControls.png":
+{
+	"frame": {"x":2,"y":2,"w":154,"h":19},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":154,"h":19},
+	"sourceSize": {"w":154,"h":19}
+},
+"seeControls.png":
+{
+	"frame": {"x":158,"y":2,"w":245,"h":19},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":245,"h":19},
+	"sourceSize": {"w":245,"h":19}
+},
+"test.png":
+{
+	"frame": {"x":405,"y":2,"w":585,"h":499},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":585,"h":499},
+	"sourceSize": {"w":585,"h":499}
+}},
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "S_UI.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:f75008b8a3f15214acda297139c4cae5$"
+}
+}
