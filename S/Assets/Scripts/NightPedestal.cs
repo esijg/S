@@ -8,7 +8,7 @@ public class NightPedestal : MonoBehaviour {
 	bool activated = false;
 	float animDuration = 8.0f;
 	public GameObject moon;
-	
+	GameObject cube;
 	Color lightColor;
 	Color camColor;
 	Color fogColor;
@@ -29,6 +29,7 @@ public class NightPedestal : MonoBehaviour {
 			sun.intensity-= 0.001f;
 			RenderSettings.ambientLight = Color.Lerp(lightColor, Color.black, (Time.time - time)/animDuration);
 			RenderSettings.fogColor = Color.Lerp(fogColor, Color.clear, (Time.time - time)/animDuration);
+			cube.transform.localPosition = Vector3.Lerp(cube.transform.position, new Vector3(0.009505763f, 0.1321318f, -0.05523976f), Time.deltaTime);
 		}
 	}
 	
@@ -39,6 +40,9 @@ public class NightPedestal : MonoBehaviour {
 			time = Time.time;
 			activated = true;
 			moon.SetActive(true);
+			other.gameObject.rigidbody.velocity = Vector3.zero;
+			other.gameObject.transform.parent = this.transform;
+			cube = other.gameObject;
 			Invoke("KillFog", animDuration);
 		}
 	}
