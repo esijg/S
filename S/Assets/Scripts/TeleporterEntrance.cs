@@ -24,6 +24,7 @@ public class TeleporterEntrance : MonoBehaviour {
 	{
 		if (collider.tag == "Player")
 		{
+			WorldState.teleported = true;
 			collider.gameObject.transform.position = exitPoint.transform.position;
 		}
 	}

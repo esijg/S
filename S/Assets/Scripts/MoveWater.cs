@@ -34,7 +34,7 @@ public class MoveWater : MonoBehaviour {
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, bottomY, transform.position.z), maxDistanceDelta);		
 			if (transform.position.y <= bottomY+2) waterObject.collider.enabled = false;
 		}
-		else if (WorldState.streamsSolved == 4 ||testTop)
+		else if ((WorldState.streamsSolved == 4 && WorldState.teleported) ||testTop)
 		{
 			waterObject.collider.enabled = true;
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, topY, transform.position.z), maxDistanceDelta);		

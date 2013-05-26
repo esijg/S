@@ -10,7 +10,7 @@ public class WaterExit : MonoBehaviour {
 	
 	void OnCollisionEnter(Collision collision)
 	{
-		if (collision.gameObject.tag == "World")
+		if (collision.gameObject.tag == "World" )
 		{
 			controller.StopFloating();
 		}

@@ -10,6 +10,10 @@ public class WaterInputController : MonoBehaviour {
 	public bool underwater = false;
 	public ConfigurableFPSWalker walkerScript;
 	bool jumping = false;
+	
+	
+	bool swimming = false;
+	
 	// Use this for initialization
 	void Start () {
 	
@@ -18,7 +22,7 @@ public class WaterInputController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		if (Input.GetKeyDown(KeyCode.Space) && !jumping && transform.position.y > bottomWater.transform.position.y-5)
+		if (Input.GetKeyDown(KeyCode.Space) && !jumping && transform.position.y > bottomWater.transform.position.y-1)
 		{
 			Debug.Log("trying to jump");
 			waterCollider.rigidbody.useGravity = true;
@@ -42,7 +46,7 @@ public class WaterInputController : MonoBehaviour {
 			underwater = true;
 			waterCollider.rigidbody.useGravity = false;
 		}
-		else if (underwater && transform.position.y > bottomWater.transform.position.y && !jumping)
+		else if (underwater && transform.position.y > bottomWater.transform.position.y)
 		{
 			underwater = false;
 			waterCollider.rigidbody.useGravity = true;
@@ -62,7 +66,7 @@ public class WaterInputController : MonoBehaviour {
 	
 	void FixedUpdate()
 	{
-		if (underwater && waterCollider.rigidbody.isKinematic == false && !jumping)
+		if (underwater && !jumping)
 		{
 			if (Input.anyKey)
 			{
@@ -95,7 +99,6 @@ public class WaterInputController : MonoBehaviour {
 		{
 			if (!waterCollider.collider.enabled)
 			{
-				waterCollider.collider.enabled = true;
 
 				Invoke("StartFloating", 0.4f);
 			}
@@ -111,33 +114,42 @@ public class WaterInputController : MonoBehaviour {
 		Debug.Log("hit water");
 		underwater = false;
 		jumping = false;
+		swimming = true;
 
 	}
 	
 	public void StopFloating()
 	{
-		if (jumping){
+		jumping = false;
+		if ( transform.position.y > bottomWater.transform.position.y || !swimming)
+		{
 			underwater = false;
+			swimming = false;
 			this.gameObject.GetComponent<ConfigurableFPSWalker>().enabled = true;
 			waterCollider.collider.enabled = false;
 			waterCollider.rigidbody.isKinematic = true;
 			transform.localPosition = Vector3.zero;
-		
 		}
+		
+		
 	}
 	
 	void StartFloating()
 	{
-		
+	
+		swimming = true;
 		jumping = false;
+		
 		this.gameObject.GetComponent<ConfigurableFPSWalker>().enabled = false;
-		transform.parent = null;
+		
 		waterCollider.transform.position = transform.position;
-		transform.parent = waterCollider.transform;
 		transform.localPosition = Vector3.zero;
+		
+	
 		waterCollider.rigidbody.useGravity = true;		
 		waterCollider.collider.enabled = true;
 		waterCollider.rigidbody.isKinematic = false;
+		
 	}
 	
 	

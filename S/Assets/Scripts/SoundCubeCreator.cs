@@ -105,10 +105,11 @@ public class SoundCubeCreator : MonoBehaviour {
 	{
 		chargeLevel = 0.0f;
 		currentState = CubeCreationState.Completed;
-
+		
 		if ( soundCube != null )
 		{
 			Debug.Log("End creation");
+			soundCube.GetComponent<SoundCubeID>().Throw();
 			soundCube.transform.parent = null;
 			soundCube.audio.Play();
 			Debug.Log(soundCube.audio.isPlaying);

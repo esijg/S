@@ -45,7 +45,7 @@ public class PersistentCubeSlot : MonoBehaviour {
 		if (collider.gameObject.tag == "SoundCube")
 		{
 			numCubesInside--;
-			if (numCubesInside == 0)
+			if (numCubesInside == 0 && WorldState.streamsSolved < 4)
 			{
 				numCubesOn--;
 				if (GameObject.Find("Stream 3").GetComponent<ParticleRenderer>().enabled==true)
