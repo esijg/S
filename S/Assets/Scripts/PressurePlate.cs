@@ -17,6 +17,8 @@ public class PressurePlate : MonoBehaviour {
 	float activationTime = 0.0f;
 	public AudioSource onAudio2;
 	
+	int numSolvedBeforeThis = -1;
+	
 	// Use this for initialization
 	void Start () 
 	{
@@ -50,6 +52,7 @@ public class PressurePlate : MonoBehaviour {
 		if (activated)return;
 		if (collision.gameObject.tag == "SoundCube")
 		{
+			if (numSolvedBeforeThis == -1)numSolvedBeforeThis = WorldState.streamsSolved;
 			currentWeight+=collision.gameObject.transform.localScale.magnitude;
 			
 			if (currentWeight >= neededWeight) 
@@ -57,6 +60,7 @@ public class PressurePlate : MonoBehaviour {
 				if (!activated)
 				{
 					WorldState.streamsSolved++;
+					WorldState.pressureSolved = true;
 					activatedSystem.enabled = true;
 					activationTime = Time.time;
 					activated = true;
@@ -77,9 +81,11 @@ public class PressurePlate : MonoBehaviour {
 			if (currentWeight < neededWeight)
 			{
 				activationTime = Time.time;
+				WorldState.pressureSolved = false;
 				activatedSystem.enabled = false;
 				activated = false;
 				WorldState.streamsSolved--;
+				if (WorldState.streamsSolved < numSolvedBeforeThis) WorldState.streamsSolved = numSolvedBeforeThis;
 				onLight.enabled = false;
 				onAudio2.Stop();
 				onAudio.enabled = false;

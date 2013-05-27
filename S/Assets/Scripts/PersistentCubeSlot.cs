@@ -12,6 +12,8 @@ public class PersistentCubeSlot : MonoBehaviour {
 	public Color onColor;
 	float time = 0.0f;
 	
+	int cubesSolvedBeforeThis = -1;
+	
 	void Start()
 	{
 		ourMaterial = new Material(sourceMaterial);
@@ -23,6 +25,7 @@ public class PersistentCubeSlot : MonoBehaviour {
 	{
 		if (collider.gameObject.tag == "SoundCube")
 		{
+			if (cubesSolvedBeforeThis == -1) cubesSolvedBeforeThis = WorldState.streamsSolved;
 			numCubesInside++;
 			if (numCubesInside == 1)
 			{
@@ -51,7 +54,7 @@ public class PersistentCubeSlot : MonoBehaviour {
 				if (GameObject.Find("Stream 3").GetComponent<ParticleRenderer>().enabled==true)
 				{
 					GameObject.Find("Stream 3").GetComponent<ParticleRenderer>().enabled = false;
-					WorldState.streamsSolved--;
+					WorldState.streamsSolved = cubesSolvedBeforeThis;
 				}
 						
 				time = Time.time;

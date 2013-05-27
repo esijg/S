@@ -28,11 +28,11 @@ public class MoveWater : MonoBehaviour {
 	
 	void FixedUpdate()
 	{
-		if (WorldState.streamsSolved < 3 && !testBottom && !testTop)
+		if ( (!WorldState.throwSolved || !WorldState.specificSolved || !WorldState.pressureSolved) && !testBottom && !testTop && !movedToBottom && !movedToTop)
 		{
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, middleY, transform.position.z), maxDistanceDelta);		
 		}
-		else if (((WorldState.streamsSolved == 3 || testBottom) &&!testTop) || movedToBottom)
+		else if ((( (WorldState.throwSolved && WorldState.specificSolved && WorldState.pressureSolved) || testBottom) &&!testTop) || (movedToBottom && !movedToTop))
 		{
 			movedToBottom = true;
 			isMoving = true;

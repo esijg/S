@@ -45,7 +45,7 @@ public class CylinderPuzzlePiece : MonoBehaviour {
 				{
 					GameObject.Find("Stream 2").GetComponent<ParticleRenderer>().enabled = true;
 					WorldState.streamsSolved++;
-					
+					WorldState.throwSolved = true;
 					foreach( AudioSource source in completedSounds)
 					{
 						source.Play();

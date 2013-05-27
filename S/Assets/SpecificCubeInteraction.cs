@@ -121,6 +121,7 @@ public class SpecificCubeInteraction : MonoBehaviour {
 				{
 					Activate(collider.gameObject);
 					WorldState.streamsSolved++;
+					WorldState.specificSolved = true;
 				}
 			}
 			else Fail(collider.gameObject);
