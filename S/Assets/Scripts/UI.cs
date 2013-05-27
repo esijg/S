@@ -16,6 +16,13 @@ public class UI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (WorldState.gameOver)
+		{
+			invertedLogo.enabled = true;
+			invertedLogo.alpha+= 0.01f;
+		}
+		
+		
 		if (Input.GetKeyDown(KeyCode.C))
 		{
 			if ( !showing)
