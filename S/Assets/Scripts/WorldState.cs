@@ -10,4 +10,5 @@ public static class WorldState {
 	public static bool specificSolved = false;
 	public static bool pressureSolved = false;
 	public static bool throwSolved = false;
+	public static bool stackSolved = false;
 }

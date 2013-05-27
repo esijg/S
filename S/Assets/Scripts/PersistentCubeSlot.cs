@@ -36,6 +36,7 @@ public class PersistentCubeSlot : MonoBehaviour {
 					{
 						GameObject.Find("Stream 3").GetComponent<ParticleRenderer>().enabled = true;
 						WorldState.streamsSolved=4;
+						WorldState.stackSolved = true;
 					}
 				}
 				time = Time.time;
@@ -55,6 +56,7 @@ public class PersistentCubeSlot : MonoBehaviour {
 				{
 					GameObject.Find("Stream 3").GetComponent<ParticleRenderer>().enabled = false;
 					WorldState.streamsSolved = cubesSolvedBeforeThis;
+					WorldState.stackSolved = false;
 				}
 						
 				time = Time.time;

@@ -32,7 +32,7 @@ public class MoveWater : MonoBehaviour {
 		{
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, middleY, transform.position.z), maxDistanceDelta);		
 		}
-		else if ((( (WorldState.throwSolved && WorldState.specificSolved && WorldState.pressureSolved) || testBottom) &&!testTop) || (movedToBottom && !movedToTop))
+		else if (((( (WorldState.throwSolved && WorldState.specificSolved && WorldState.pressureSolved && !WorldState.stackSolved) || testBottom) &&!testTop)) && !movedToTop)
 		{
 			movedToBottom = true;
 			isMoving = true;
@@ -44,7 +44,7 @@ public class MoveWater : MonoBehaviour {
 			movedToTop = true;
 			waterObject.collider.enabled = true;
 			isMoving = true;
-			transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, topY, transform.position.z), maxDistanceDelta);		
+			transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, topY, transform.position.z), maxDistanceDelta*3);		
 		}
 	}
 }
