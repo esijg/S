@@ -20,6 +20,7 @@ public class SpecificCubeInteraction : MonoBehaviour {
 	bool failing = false;
 	float failTime = 0.0f;
 	public GameObject[] materialObjects;
+	public AudioSource completedSound2;
 	Material instancedMaterial;
 	
 	// Use this for initialization
@@ -96,6 +97,7 @@ public class SpecificCubeInteraction : MonoBehaviour {
 		cube.collider.enabled = false;
 		correctSoundSource.enabled = true;
 		correctSoundSource.Play();
+		completedSound2.Play();
 		cube.audio.Stop();
 		
 		

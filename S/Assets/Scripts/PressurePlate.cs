@@ -15,6 +15,7 @@ public class PressurePlate : MonoBehaviour {
 	Material instancedMaterial;
 	public Light onLight;
 	float activationTime = 0.0f;
+	public AudioSource onAudio2;
 	
 	// Use this for initialization
 	void Start () 
@@ -29,7 +30,7 @@ public class PressurePlate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		Debug.Log("Streams solveD: "+WorldState.streamsSolved);
 		float weight = (currentWeight > neededWeight)?neededWeight:currentWeight;
 		transform.position = Vector3.MoveTowards(transform.position, offPosition-transform.up* ( weight/neededWeight * 0.3f),0.01f);
 		
@@ -59,6 +60,7 @@ public class PressurePlate : MonoBehaviour {
 					activatedSystem.enabled = true;
 					activationTime = Time.time;
 					activated = true;
+					onAudio2.Play();
 					onLight.enabled = true;
 					onAudio.enabled = true;
 					onAudio.Play();
@@ -79,6 +81,7 @@ public class PressurePlate : MonoBehaviour {
 				activated = false;
 				WorldState.streamsSolved--;
 				onLight.enabled = false;
+				onAudio2.Stop();
 				onAudio.enabled = false;
 			}
 		

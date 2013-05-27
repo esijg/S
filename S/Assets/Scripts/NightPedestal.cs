@@ -63,7 +63,7 @@ public class NightPedestal : MonoBehaviour {
 		
 		if (moon.activeSelf)
 		{
-		cube.transform.localPosition = Vector3.Lerp(cube.transform.localPosition, Vector3.up*0.1f+Vector3.right*0.009505763f+Vector3.forward*-0.05523976f, Time.deltaTime*4);
+			cube.transform.localPosition = Vector3.Lerp(cube.transform.localPosition, Vector3.up*0.1f+Vector3.right*0.009505763f+Vector3.forward*-0.05523976f, Time.deltaTime*4);
 			cube.transform.localRotation = Quaternion.Lerp(cube.transform.localRotation, Quaternion.identity, Time.deltaTime*4);
 		}
 		

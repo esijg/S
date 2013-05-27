@@ -6,6 +6,9 @@ public class TeleporterEntrance : MonoBehaviour {
 	public Transform exitPoint;
 	
 	public bool animatingIn = false;
+	
+	public LightningBolt[] topStreams;
+	public AudioSource onSound;
 	float time = 0.0f;
 	
 	void Start()
@@ -20,6 +23,11 @@ public class TeleporterEntrance : MonoBehaviour {
 		{
 			if (!animatingIn)
 			{
+				foreach (LightningBolt bolt in topStreams)
+				{
+					bolt.enabled = true;
+				}
+				onSound.Play();
 				time = Time.time;
 				animatingIn = true;
 			}

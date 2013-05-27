@@ -9,9 +9,15 @@ public class UI : MonoBehaviour {
 	public UISprite logo;
 	public UISprite invertedLogo;
 	bool showing = false;
+	bool hiding = false;
 	// Use this for initialization
 	void Start () {
+		Invoke("Hide", 3.0f);
+	}
 	
+	void Hide()
+	{
+		hiding = true;
 	}
 	
 	// Update is called once per frame
@@ -20,6 +26,11 @@ public class UI : MonoBehaviour {
 		{
 			invertedLogo.enabled = true;
 			invertedLogo.alpha+= 0.01f;
+		}
+		
+		if (hiding)
+		{
+			logo.alpha-=0.01f;
 		}
 		
 		
