@@ -47,6 +47,7 @@ public class TeleporterEntrance : MonoBehaviour {
 	{
 		if (collider.tag == "Player")
 		{
+			MoveWater.movedToTop = true;
 			WorldState.teleported = true;
 			collider.gameObject.transform.position = exitPoint.transform.position;
 		}

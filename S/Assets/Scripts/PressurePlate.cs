@@ -32,7 +32,6 @@ public class PressurePlate : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log("Streams solveD: "+WorldState.streamsSolved);
 		float weight = (currentWeight > neededWeight)?neededWeight:currentWeight;
 		transform.position = Vector3.MoveTowards(transform.position, offPosition-transform.up* ( weight/neededWeight * 0.3f),0.01f);
 		

@@ -19,11 +19,13 @@ public class NightPedestal : MonoBehaviour {
 	public GameObject nightBoltEnd;
 	public Material nightMaterial;
 	bool animateBolt = false;
+	GUITexture vignette;
 	
 	Color nightColor;
 	// Use this for initialization
 	void Start () {
 		time = Time.time;
+		vignette = GameObject.Find("SelectionVignette").GetComponent<GUITexture>();
 		lightColor = RenderSettings.ambientLight;
 		camColor = Camera.mainCamera.backgroundColor;
 		fogColor = RenderSettings.fogColor;
@@ -75,6 +77,7 @@ public class NightPedestal : MonoBehaviour {
 			}
 			sun.intensity-= 0.001f;
 			RenderSettings.fogDensity-= 0.0001f;
+			if (vignette.color.a > 0.3f) vignette.color = new Color(vignette.color.r, vignette.color.g, vignette.color.b, vignette.color.a-0.01f);
 			Camera.mainCamera.backgroundColor = Color.Lerp(camColor, Color.black, (Time.time - time)/animDuration);
 			RenderSettings.ambientLight = Color.Lerp(lightColor, Color.black, (Time.time - time)/animDuration);
 			RenderSettings.fogColor = Color.Lerp(fogColor, Color.clear, (Time.time - time)/animDuration);

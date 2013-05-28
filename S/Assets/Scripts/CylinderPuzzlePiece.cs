@@ -55,7 +55,7 @@ public class CylinderPuzzlePiece : MonoBehaviour {
 				streamEmitter.enabled = true;
 				cube = collision.gameObject;
 				
-								cube.rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+				cube.rigidbody.constraints = RigidbodyConstraints.FreezeAll;
 				cube.collider.enabled = false;
 				cube.rigidbody.velocity = Vector3.zero;
 				cube.transform.parent = this.transform;

@@ -27,7 +27,7 @@ public class WaterInputController : MonoBehaviour {
 			Debug.Log("trying to jump");
 			waterCollider.rigidbody.useGravity = true;
 			waterCollider.rigidbody.isKinematic = false;
-			waterCollider.rigidbody.velocity = Vector3.up*20 + transform.forward*10;
+			waterCollider.rigidbody.velocity = Vector3.up*25 + transform.forward*10;
 			waterCollider.rigidbody.angularDrag = 3;
 			waterCollider.rigidbody.drag = 3;
 			jumping = true;
@@ -70,10 +70,10 @@ public class WaterInputController : MonoBehaviour {
 		{
 			if (Input.anyKey)
 			{
-				if (Input.GetKey(KeyCode.W)) waterCollider.rigidbody.velocity = Camera.mainCamera.transform.forward;
-				if (Input.GetKey(KeyCode.A)) waterCollider.rigidbody.velocity = Camera.mainCamera.transform.right*-1;
-				if (Input.GetKey(KeyCode.D)) waterCollider.rigidbody.velocity = Camera.mainCamera.transform.right;
-				if (Input.GetKey(KeyCode.S)) waterCollider.rigidbody.velocity = Camera.mainCamera.transform.forward*-1;
+				if (Input.GetKey(KeyCode.W)) waterCollider.rigidbody.velocity = Camera.mainCamera.transform.forward*2.5f;
+				if (Input.GetKey(KeyCode.A)) waterCollider.rigidbody.velocity = Camera.mainCamera.transform.right*-2.5f;
+				if (Input.GetKey(KeyCode.D)) waterCollider.rigidbody.velocity = Camera.mainCamera.transform.right*2.5f;
+				if (Input.GetKey(KeyCode.S)) waterCollider.rigidbody.velocity = Camera.mainCamera.transform.forward*-2.5f;
 			}
 			else
 			{
@@ -89,7 +89,7 @@ public class WaterInputController : MonoBehaviour {
 		else if (jumping)
 		{
 			waterCollider.rigidbody.useGravity = true;
-			if (!waterCollider.rigidbody.isKinematic)waterCollider.rigidbody.velocity += Physics.gravity*Time.deltaTime*Time.deltaTime;
+			if (!waterCollider.rigidbody.isKinematic)waterCollider.rigidbody.velocity += Physics.gravity*Time.deltaTime*2;
 		}
 	}
 	

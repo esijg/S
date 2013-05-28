@@ -22,6 +22,7 @@ public class SpecificCubeInteraction : MonoBehaviour {
 	public GameObject[] materialObjects;
 	public AudioSource completedSound2;
 	Material instancedMaterial;
+	public Material alpha6;
 	
 	// Use this for initialization
 	void Start () {
@@ -30,7 +31,7 @@ public class SpecificCubeInteraction : MonoBehaviour {
 		cubeSkeletonMaterial.name = cubeSkeletonMaterial.name+"(instanced)";
 		cubeSkeletonMaterial.color = Color.black;
 		neutralColor = Color.black;//new Color(115/255.0f, 115/255.0f, 115/255.0f, 1.0f);
-	
+		alpha6 = cubeSource.gameObject.renderer.material;
 		foreach (GameObject r in materialObjects)
 		{
 			r.renderer.material = cubeSkeletonMaterial;
@@ -64,7 +65,7 @@ public class SpecificCubeInteraction : MonoBehaviour {
 		{
 			
 			cubeSource.volume += 0.04f;
-			
+			cubeSource.renderer.material.color = new Color(115/255.0f, 115/255.0f, 115/255.0f, 200.0f/255.0f);
 			cubeSkeletonMaterial.color = Color.Lerp(neutralColor, Color.red, (Time.time - failTime)/1.0f);
 			if (Time.time - failTime  > 1.0f)
 			{
@@ -77,8 +78,11 @@ public class SpecificCubeInteraction : MonoBehaviour {
 		else if (!activating)
 		{
 			if (cubeSource.volume > 0.0f) cubeSource.volume -= 0.02f;
+			cubeSource.renderer.material.color = new Color(alpha6.color.r, alpha6.color.g, alpha6.color.b, cubeSource.renderer.material.color.a-0.01f);
+
 			cubeSkeletonMaterial.color = Color.Lerp(Color.red, neutralColor, (Time.time - failTime)/1.0f);
 		}
+
 		
 	}
 	

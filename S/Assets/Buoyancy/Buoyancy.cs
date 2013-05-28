@@ -40,7 +40,7 @@ public class Buoyancy : MonoBehaviour {
 		//
 		*/
 		try{
-		rigidbody.SetDensity(density);
+			rigidbody.SetDensity(density);
 		}
 		catch(System.Exception e){}
 		rigidbody.centerOfMass = cg;

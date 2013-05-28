@@ -85,11 +85,11 @@ public class SoundCubeCreator : MonoBehaviour {
 		
 		if ( currentState == CubeCreationState.Configuring && chargeLevel <= 4.0f)
 		{
-			
+			if (!Input.GetMouseButton(0))EndCreatingCube(false);
 			chargeLevel+=Time.deltaTime;
 			if (soundCube != null)soundCube.audio.pitch= 0.0f + chargeLevel;
-			soundCube.collider.enabled = true;
-       		soundCube.transform.localScale = new Vector3(soundCube.transform.localScale.x+ Time.deltaTime*0.25f, soundCube.transform.localScale.y+ Time.deltaTime*0.25f, soundCube.transform.localScale.z+ Time.deltaTime*0.25f);
+			if (soundCube != null)soundCube.collider.enabled = true;
+       		if (soundCube != null)soundCube.transform.localScale = new Vector3(soundCube.transform.localScale.x+ Time.deltaTime*0.25f, soundCube.transform.localScale.y+ Time.deltaTime*0.25f, soundCube.transform.localScale.z+ Time.deltaTime*0.25f);
 		}
 		
 		
@@ -108,13 +108,10 @@ public class SoundCubeCreator : MonoBehaviour {
 		
 		if ( soundCube != null )
 		{
-			Debug.Log("End creation");
 			soundCube.GetComponent<SoundCubeID>().Throw();
 			soundCube.transform.parent = null;
 			soundCube.audio.Play();
-			Debug.Log(soundCube.audio.isPlaying);
 			soundCube.rigidbody.isKinematic = false;
-			
 			
 			if (thrown)
 			{

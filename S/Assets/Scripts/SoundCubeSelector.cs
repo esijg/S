@@ -57,26 +57,7 @@ public class SoundCubeSelector : MonoBehaviour {
 			fadeOutCountdown = 0.5f;
 
 		}
-	/*	fadeOutCountdown -= Time.deltaTime;
-		if( fadingOut)	vignetteTexture.color = new Color(1.0f, 1.0f, 1.0f, 2.0f * fadeOutCountdown);
-		
-		if ( fadeOutCountdown <= 0.1f ){
-			fadingIn = true;
-			fadingOut = false;
-		}
-		
-		if (fadingIn)
-		{
-			fadeOutCountdown+=Time.deltaTime;
-			vignetteTexture.color = new Color(1.0f, 1.0f, 1.0f, 2.0f * fadeOutCountdown);
-			if ( fadeOutCountdown >= 0.5f )
-			{
-				fadingIn = false;
-				fadingOut = false;
-				fadeOutCountdown = 0.5f;
-			}
-		}
-		*/
+
 	}
 	
 	void SelectWeapon(int index)

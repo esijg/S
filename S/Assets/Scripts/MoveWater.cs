@@ -14,7 +14,7 @@ public class MoveWater : MonoBehaviour {
 	public GameObject waterObject;
 	
 	bool movedToBottom = false;
-	bool movedToTop = false;
+	public static bool movedToTop = false;
 	// Use this for initialization
 	void Start () {
 	
@@ -28,23 +28,23 @@ public class MoveWater : MonoBehaviour {
 	
 	void FixedUpdate()
 	{
-		if ( (!WorldState.throwSolved || !WorldState.specificSolved || !WorldState.pressureSolved) && !testBottom && !testTop && !movedToBottom && !movedToTop)
+		if ( (!WorldState.throwSolved || !WorldState.specificSolved || !WorldState.pressureSolved) && !movedToBottom && !movedToTop)
 		{
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, middleY, transform.position.z), maxDistanceDelta);		
 		}
-		else if (((( (WorldState.throwSolved && WorldState.specificSolved && WorldState.pressureSolved && !WorldState.stackSolved) || testBottom) &&!testTop)) && !movedToTop)
+		else if  ((WorldState.throwSolved && WorldState.specificSolved && WorldState.pressureSolved && !WorldState.stackSolved && !movedToTop) || (movedToBottom && !WorldState.stackSolved && !movedToTop))
 		{
 			movedToBottom = true;
 			isMoving = true;
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, bottomY, transform.position.z), maxDistanceDelta);		
 			if (transform.position.y <= bottomY+2) waterObject.collider.enabled = false;
 		}
-		else if ((WorldState.streamsSolved == 4 && WorldState.teleported) ||testTop || movedToTop)
+		else if ((WorldState.throwSolved && WorldState.specificSolved && WorldState.pressureSolved && WorldState.stackSolved&& WorldState.teleported) || movedToTop)
 		{
 			movedToTop = true;
 			waterObject.collider.enabled = true;
 			isMoving = true;
-			transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, topY, transform.position.z), maxDistanceDelta*3);		
+			transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, topY, transform.position.z), maxDistanceDelta*10);		
 		}
 	}
 }

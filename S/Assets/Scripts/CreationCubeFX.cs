@@ -119,7 +119,6 @@ public class CreationCubeFX : MonoBehaviour
 			
 			if ( Vector3.Distance(rightHalf.transform.localPosition, Vector3.zero) < Vector3.kEpsilon)
 			{
-				Debug.Log("fading in");
 				FadeInFacesWithMaterialID(0);
 				transitioningIn = false;
 			}
