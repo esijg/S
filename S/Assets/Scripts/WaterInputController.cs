@@ -97,7 +97,13 @@ public class WaterInputController : MonoBehaviour {
 	{
 		if (other.gameObject.name == "Water")
 		{
-			if (!waterCollider.collider.enabled)
+			
+			if (WorldState.teleported)
+			{
+				waterCollider.transform.position = GameObject.Find("TopTeleporter").transform.position;
+				transform.localPosition = Vector3.zero;
+			}
+			else if (!waterCollider.collider.enabled)
 			{
 
 				Invoke("StartFloating", 0.4f);

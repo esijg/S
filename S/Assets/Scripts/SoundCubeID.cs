@@ -7,6 +7,7 @@ public class SoundCubeID : MonoBehaviour {
 	public bool thrown = false;
 	
 	bool colliding = false;
+	bool floating = true;
 	
 	void OnTriggerEnter(Collider collider)
 	{
@@ -15,6 +16,7 @@ public class SoundCubeID : MonoBehaviour {
 			colliding = true;
 			transform.parent = GameObject.Find("WaterLine").transform;
 		}
+		else if (collider.gameObject.name == "Water") colliding = true;
 		
 	}
 	
@@ -22,16 +24,36 @@ public class SoundCubeID : MonoBehaviour {
 	{
 		if ( collider.gameObject.name == "Water")
 		{
-			colliding = false;
+	
+		}
+	}
+	
+	void Update()
+	{
+		if (MoveWater.movedToTop && transform.position.y < 0)
+		{
+			if (transform.parent != null )transform.parent = null; 
+		}
+		
+		if (colliding)
+		{
+			if (transform.parent == null) transform.parent = GameObject.Find("WaterLine").transform;
 		}
 	}
 	
 	public void Throw()
 	{
 		thrown = true;
-		if (colliding) transform.parent = GameObject.Find("WaterLine").transform;
+		if (colliding)
+		{
+			transform.parent = GameObject.Find("WaterLine").transform;
+		}
 
 	}
+	
+	
+	
+	
 	
 	
 }

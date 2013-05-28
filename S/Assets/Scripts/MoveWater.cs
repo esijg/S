@@ -23,11 +23,21 @@ public class MoveWater : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-	
+		
 	}
 	
 	void FixedUpdate()
 	{
+		if (testTop)
+		{
+						movedToTop = true;
+			waterObject.collider.enabled = true;
+			WorldState.teleported = true;
+			isMoving = true;
+			transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, topY, transform.position.z), maxDistanceDelta*10);		
+
+			return;
+		}
 		if ( (!WorldState.throwSolved || !WorldState.specificSolved || !WorldState.pressureSolved) && !movedToBottom && !movedToTop)
 		{
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, middleY, transform.position.z), maxDistanceDelta);		
@@ -37,7 +47,7 @@ public class MoveWater : MonoBehaviour {
 			movedToBottom = true;
 			isMoving = true;
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, bottomY, transform.position.z), maxDistanceDelta);		
-			if (transform.position.y <= bottomY+2) waterObject.collider.enabled = false;
+			if (transform.position.y <= bottomY+1) waterObject.collider.enabled = false;
 		}
 		else if ((WorldState.throwSolved && WorldState.specificSolved && WorldState.pressureSolved && WorldState.stackSolved&& WorldState.teleported) || movedToTop)
 		{

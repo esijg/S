@@ -10,6 +10,7 @@ public class TeleporterEntrance : MonoBehaviour {
 	public LightningBolt[] topStreams;
 	public AudioSource onSound;
 	float time = 0.0f;
+	public GameObject player;
 	
 	void Start()
 	{
@@ -49,7 +50,7 @@ public class TeleporterEntrance : MonoBehaviour {
 		{
 			MoveWater.movedToTop = true;
 			WorldState.teleported = true;
-			collider.gameObject.transform.position = exitPoint.transform.position;
+			player.transform.position = exitPoint.transform.position;
 		}
 	}
 }

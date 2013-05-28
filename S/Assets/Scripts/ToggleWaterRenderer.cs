@@ -14,7 +14,7 @@ public class ToggleWaterRenderer : MonoBehaviour {
 	
 	void Update()
 	{
-	
+		collider.enabled = true;
 		if ( playerPosition.position.y < bottomWater.transform.position.y)
 		{
 			if (topEnabled)

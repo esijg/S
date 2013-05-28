@@ -47,6 +47,7 @@ public class SpecificCubeInteraction : MonoBehaviour {
 			cubeSkeletonMaterial.color = Color.Lerp(neutralColor, Color.white, (Time.time - failTime)/2.0f);
 			lightningMaterial.color = Color.Lerp(new Color(1.0f, 1.0f, 1.0f, 0.1f), Color.white, (Time.time - failTime)/2.0f);
 			cubeSource.audio.volume = 0.0f;
+			cubeSource.renderer.material.color = Color.clear;
 			if ( Time.time - failTime > 2.0f && particleSystem.isPlaying == false)
 			{
 				particleSystem.Play();

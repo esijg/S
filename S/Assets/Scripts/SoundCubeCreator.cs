@@ -115,6 +115,7 @@ public class SoundCubeCreator : MonoBehaviour {
 			
 			if (thrown)
 			{
+				soundCube.GetComponent<SoundCubeID>().Throw();
 				soundCube.rigidbody.velocity = transform.forward*10;
 			}
 		}

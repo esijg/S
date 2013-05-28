@@ -25,6 +25,7 @@ public class UI : MonoBehaviour {
 		if (WorldState.gameOver)
 		{
 			invertedLogo.enabled = true;
+			viewControls.enabled = false;
 			invertedLogo.alpha+= 0.01f;
 		}
 		
@@ -34,7 +35,7 @@ public class UI : MonoBehaviour {
 		}
 		
 		
-		if (Input.GetKeyDown(KeyCode.C))
+		if (Input.GetKeyDown(KeyCode.C) && !WorldState.gameOver)
 		{
 			if ( !showing)
 			{
