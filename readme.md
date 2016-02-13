@@ -1,3 +1,5 @@
+**This project has been migrated to: https://gitlab.com/johannesg/S**
+
 # Introduction
 S is a first-person exploration for Mac/PC that uses the Unity 3D engine. You find yourself in a distant, empty, washed out white foggy world where nothing seems to live. The only things to indicate life are certain movements of the world itself, the rich soundscape and the voice you can hear in the distance.
 
